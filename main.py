@@ -17,9 +17,14 @@ PDF_FILE_PATH = "./knowledge_base/db_kc.pdf"
 CHROMA_DB_PATH = "./chroma_db"
 COLLECTION_NAME = "ai_knowledge_base"
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
-GROQ_API_KEY = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
-LLM_MODEL_NAME = os.getenv("MODEL_NAME") or st.secrets.get("MODEL_NAME", "llama-3.1-8b-instant")
+os.environ["ANONYMIZED_TELEMETRY"] = "False"
 
+try:
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY") or st.secrets["GROQ_API_KEY"]
+    LLM_MODEL_NAME = os.getenv("MODEL_NAME") or st.secrets.get("MODEL_NAME", "llama-3.1-8b-instant")
+except:
+    GROQ_API_KEY = None
+    LLM_MODEL_NAME = "llama-3.1-8b-instant"
 # ---------- PDF ----------
 def load_pdf(file_path):
     reader = PdfReader(file_path)
