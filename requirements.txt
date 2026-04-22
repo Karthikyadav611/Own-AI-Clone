@@ -1,0 +1,13 @@
+langchain_groq
+langchain
+numpy
+PyPDF2
+chromadb
+langchain-huggingface
+scikit-learn
+streamlit
+requests
+pandas
+groq
+langchain_community
+sentence-transformers
