@@ -17,8 +17,8 @@ PDF_FILE_PATH = "./knowledge_base/db_kc.pdf"
 CHROMA_DB_PATH = "./chroma_db"
 COLLECTION_NAME = "ai_knowledge_base"
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
-LLM_MODEL_NAME = os.getenv("MODEL_NAME", "llama-3.1-8b-instant")
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+LLM_MODEL_NAME = os.getenv("MODEL_NAME") or st.secrets.get("MODEL_NAME", "llama-3.1-8b-instant")
 
 # ---------- PDF ----------
 def load_pdf(file_path):
@@ -72,6 +72,9 @@ def retrieve(query, collection, embed_model, top_k=3):
 
 # ---------- LLM ----------
 def get_llm():
+    if not GROQ_API_KEY:
+        raise ValueError("❌ GROQ API KEY is missing")
+
     return ChatGroq(
         model_name=LLM_MODEL_NAME,
         temperature=0.5,
