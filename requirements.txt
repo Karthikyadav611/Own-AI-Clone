@@ -9,7 +9,8 @@ langchain-groq
 sentence-transformers
 python-dotenv
 
-# 🔥 CRITICAL FIXES
+# 🔥 critical fixes
+numpy==1.26.4
 protobuf==3.20.3
 opentelemetry-api==1.24.0
 opentelemetry-sdk==1.24.0
