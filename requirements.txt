@@ -1,16 +1,13 @@
-streamlit
-chromadb==0.4.24
-PyPDF2
+langchain_groq
 langchain
-langchain-core
-langchain-text-splitters
+numpy
+PyPDF2
+chromadb
 langchain-huggingface
-langchain-groq
+scikit-learn
+streamlit
+requests
+pandas
+groq
+langchain_community
 sentence-transformers
-python-dotenv
-
-# 🔥 critical fixes
-numpy==1.26.4
-protobuf==3.20.3
-opentelemetry-api==1.24.0
-opentelemetry-sdk==1.24.0
